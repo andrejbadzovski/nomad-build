@@ -2,11 +2,11 @@ import { getAllProjects } from '@/sanity/lib/queries'
 import { defaultData } from '@/lib/constants'
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/sections/Footer'
-import { ProjectsGrid } from '@/components/sections/ProjectsGrid'
 import { SmoothScroll } from '@/components/SmoothScroll'
 import { CustomCursor } from '@/components/CustomCursor'
 import { ScrollProgress } from '@/components/ScrollProgress'
 import { Grain } from '@/components/Grain'
+import { ProjectsGrid } from '@/components/sections/ProjectsGrid'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {

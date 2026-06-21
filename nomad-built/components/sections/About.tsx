@@ -2,7 +2,6 @@
 import { motion } from 'framer-motion'
 import { urlFor } from '@/sanity/lib/image'
 import type { SiteSettings } from '@/lib/constants'
-import { FALLBACK_IMAGES } from '@/lib/constants'
 
 export function About({ data }: { data: SiteSettings & any }) {
   const aboutImage   = data?.aboutImage
@@ -24,12 +23,14 @@ export function About({ data }: { data: SiteSettings & any }) {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={aboutImage ? urlFor(aboutImage).width(800).url() : FALLBACK_IMAGES.about}
-            alt="About Talcon Developments"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
-          />
+          {aboutImage && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={urlFor(aboutImage).width(800).url()}
+              alt="About Talcon Developments"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+            />
+          )}
         </motion.div>
 
         {/* Accent quote box — slides up */}
