@@ -1,0 +1,26 @@
+# Root HTML prototype — not needed
+index.html
+
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Environment variables — NEVER commit these
+.env.local
+.env*.local
+
+# Sanity build cache
+.sanity/
+
+# TypeScript build info
+tsconfig.tsbuildinfo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel
