@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   description: 'Browse all our completed new homes, townhouses and extensions across Geelong, the Surfcoast and Melbourne Western Suburbs.',
 }
 
+export const revalidate = 30
+
 export default async function ProjectsPage() {
   let projects = defaultData.projects as any[]
   let siteSettings = defaultData.siteSettings as any

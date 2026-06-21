@@ -16,6 +16,9 @@ import { SmoothScroll } from '@/components/SmoothScroll'
 import { ScrollProgress } from '@/components/ScrollProgress'
 import { Grain } from '@/components/Grain'
 
+// Re-fetch from Sanity every 30 seconds so CMS changes appear without redeploying
+export const revalidate = 30
+
 export default async function Home() {
   let siteSettings = defaultData.siteSettings as any
   let projects = defaultData.projects as any[]
