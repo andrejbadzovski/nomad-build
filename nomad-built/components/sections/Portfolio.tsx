@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { urlFor } from '@/sanity/lib/image'
@@ -19,11 +20,13 @@ function getImages(project: Project, fallback: string): string[] {
 function Lightbox({ project, fallback, onClose }: { project: Project; fallback: string; onClose: () => void }) {
   const images = getImages(project, fallback)
   const [idx, setIdx] = useState(0)
+  const [mounted, setMounted] = useState(false)
 
   const prev = useCallback(() => setIdx(i => (i - 1 + images.length) % images.length), [images.length])
   const next = useCallback(() => setIdx(i => (i + 1) % images.length), [images.length])
 
   useEffect(() => {
+    setMounted(true)
     const handler = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
       if (e.key === 'ArrowLeft') prev()
@@ -37,7 +40,9 @@ function Lightbox({ project, fallback, onClose }: { project: Project; fallback: 
     }
   }, [onClose, prev, next])
 
-  return (
+  if (!mounted) return null
+
+  return createPortal(
     <motion.div
       className="lightbox-backdrop"
       initial={{ opacity: 0 }}
@@ -101,7 +106,8 @@ function Lightbox({ project, fallback, onClose }: { project: Project; fallback: 
           )}
         </div>
       </motion.div>
-    </motion.div>
+    </motion.div>,
+    document.body
   )
 }
 
