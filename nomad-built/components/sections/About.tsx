@@ -4,49 +4,46 @@ import { urlFor } from '@/sanity/lib/image'
 import type { SiteSettings } from '@/lib/constants'
 
 export function About({ data }: { data: SiteSettings & any }) {
-  const aboutImage   = data?.aboutImage
-  if (typeof window !== 'undefined') {
-    console.log('[About] full data keys:', data ? Object.keys(data) : 'no data')
-    console.log('[About] aboutImage:', aboutImage)
-    console.log('[About] heroImage (for comparison):', data?.heroImage)
-  }
-  const quote        = data?.aboutQuote || 'Crafting homes that tell your story.'
-  const title        = data?.aboutTitle || 'More Than Builders'
-  const titleEm      = data?.aboutTitleEm || "We're Creators"
-  const paragraph1   = data?.aboutParagraph1 || "At Talcon Developments, we are more than builders; we are creators of bespoke spaces built to stand the test of time. Our team specialises in new homes, townhouses and extensions across Geelong, the Surfcoast and Melbourne's Western Suburbs."
-  const paragraph2   = data?.aboutParagraph2 || 'Every project begins with a collaborative design journey and is guided seamlessly through construction with meticulous attention to detail. Our full-service approach ensures every stage — from concept to completion — is managed with expertise, transparency, and care.'
+  const aboutImage = data?.aboutImage
+  const quote      = data?.aboutQuote || 'Crafting homes that tell your story.'
+  const title      = data?.aboutTitle || 'More Than Builders'
+  const titleEm    = data?.aboutTitleEm || "We're Creators"
+  const paragraph1 = data?.aboutParagraph1 || "At Talcon Developments, we are more than builders; we are creators of bespoke spaces built to stand the test of time. Our team specialises in new homes, townhouses and extensions across Geelong, the Surfcoast and Melbourne's Western Suburbs."
+  const paragraph2 = data?.aboutParagraph2 || 'Every project begins with a collaborative design journey and is guided seamlessly through construction with meticulous attention to detail. Our full-service approach ensures every stage — from concept to completion — is managed with expertise, transparency, and care.'
+
+  const imageUrl = aboutImage ? urlFor(aboutImage).width(1200).url() : null
 
   return (
     <section id="about">
-      {/* Image stack */}
-      <div className="about-image-stack">
-        {/* Main image — temporarily no animation to debug */}
-        <div className="about-img-main">
-          {aboutImage && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={urlFor(aboutImage).width(800).url()}
-              alt="About Talcon Developments"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
-            />
-          )}
-        </div>
-
-        {/* Accent quote box — slides up */}
+      {/* Image column */}
+      <div className="about-media">
         <motion.div
-          className="about-img-accent"
+          className="about-media-main"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {imageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={imageUrl} alt="Talcon Developments" />
+          ) : (
+            <div className="about-media-placeholder" />
+          )}
+        </motion.div>
+
+        <motion.div
+          className="about-media-quote"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
           <blockquote>{quote}</blockquote>
         </motion.div>
-
-        <div className="about-year">2020</div>
       </div>
 
-      {/* Text content */}
+      {/* Text column */}
       <div>
         <motion.p
           className="section-eyebrow"
