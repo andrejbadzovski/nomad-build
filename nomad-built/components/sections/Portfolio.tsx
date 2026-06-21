@@ -125,7 +125,7 @@ export function Portfolio({ data }: { data: Project[] }) {
             Featured <em>Projects</em>
           </motion.h2>
         </div>
-        <motion.a href="#" className="btn-ghost" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
+        <motion.a href="/projects" className="btn-ghost" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
           View All Projects <span className="btn-ghost-arrow">→</span>
         </motion.a>
       </div>

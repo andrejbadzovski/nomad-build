@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const links = ['About', 'Services', 'Projects', 'Reviews', 'Team']
+const links = ['About', 'Services', 'Reviews', 'Team']
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -50,6 +50,7 @@ export function Nav() {
               </a>
             </li>
           ))}
+          <li><a href="/projects">Projects</a></li>
         </ul>
 
         <a
@@ -95,6 +96,17 @@ export function Nav() {
                 {item}
               </motion.a>
             ))}
+            <motion.a
+              key="projects"
+              href="/projects"
+              className="mobile-link"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ delay: links.length * 0.07, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Projects
+            </motion.a>
             <motion.a
               href="#cta"
               className="btn-primary"

@@ -9,7 +9,16 @@ export async function getSiteSettings() {
 export async function getFeaturedProjects() {
   if (!client) return null
   return client.fetch(
-    groq`*[_type == "project" && featured == true] | order(order asc) [0...5] {
+    groq`*[_type == "project"] | order(order asc) [0...5] {
+      _id, name, location, category, year, image, gallery, order
+    }`
+  )
+}
+
+export async function getAllProjects() {
+  if (!client) return null
+  return client.fetch(
+    groq`*[_type == "project"] | order(order asc) {
       _id, name, location, category, year, image, gallery, order
     }`
   )
