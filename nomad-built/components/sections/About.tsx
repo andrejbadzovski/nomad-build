@@ -15,23 +15,25 @@ export function About({ data }: { data: SiteSettings & any }) {
     <section id="about">
       {/* Image stack */}
       <div className="about-image-stack">
-        {/* Main image — clip-path reveal left→right */}
-        <motion.div
-          className="about-img-main"
-          initial={{ clipPath: 'inset(0 100% 0 0)' }}
-          whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
-        >
-          {aboutImage && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={urlFor(aboutImage).width(800).url()}
-              alt="About Talcon Developments"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
-            />
-          )}
-        </motion.div>
+        {/* Main image — x-slide reveal (overflow:hidden on parent clips it) */}
+        <div className="about-img-main">
+          <motion.div
+            initial={{ x: '-101%' }}
+            whileInView={{ x: '0%' }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
+            style={{ width: '100%', height: '100%' }}
+          >
+            {aboutImage && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={urlFor(aboutImage).width(800).url()}
+                alt="About Talcon Developments"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+              />
+            )}
+          </motion.div>
+        </div>
 
         {/* Accent quote box — slides up */}
         <motion.div
