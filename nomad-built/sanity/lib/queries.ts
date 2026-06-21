@@ -3,7 +3,7 @@ import { client } from './client'
 
 export async function getSiteSettings() {
   if (!client) return null
-  return client.fetch(groq`*[_type == "siteSettings"][0]`)
+  return client.fetch(groq`*[_type == "siteSettings"] | order(_createdAt asc) [0]`)
 }
 
 export async function getFeaturedProjects() {
