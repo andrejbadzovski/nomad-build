@@ -23,11 +23,11 @@ export const defaultData = {
     linkedinUrl: '#',
   },
   projects: [
-    { _id: '1', name: 'Newtown Family Home', location: 'Newtown, Geelong', category: 'New Build', year: 2024, image: null, order: 1 },
-    { _id: '2', name: 'Torquay Coastal Retreat', location: 'Torquay, Surfcoast', category: 'New Build', year: 2024, image: null, order: 2 },
-    { _id: '3', name: 'Werribee Townhouses', location: 'Werribee, Melbourne West', category: 'Townhouse', year: 2023, image: null, order: 3 },
-    { _id: '4', name: 'Belmont Extension', location: 'Belmont, Geelong', category: 'Extension', year: 2023, image: null, order: 4 },
-    { _id: '5', name: 'Anglesea Beach House', location: 'Anglesea, Surfcoast', category: 'New Build', year: 2022, image: null, order: 5 },
+    { _id: '1', name: 'Newtown Family Home', location: 'Newtown, Geelong', category: 'New Build', year: 2024, image: null, gallery: [], order: 1 },
+    { _id: '2', name: 'Torquay Coastal Retreat', location: 'Torquay, Surfcoast', category: 'New Build', year: 2024, image: null, gallery: [], order: 2 },
+    { _id: '3', name: 'Werribee Townhouses', location: 'Werribee, Melbourne West', category: 'Townhouse', year: 2023, image: null, gallery: [], order: 3 },
+    { _id: '4', name: 'Belmont Extension', location: 'Belmont, Geelong', category: 'Extension', year: 2023, image: null, gallery: [], order: 4 },
+    { _id: '5', name: 'Anglesea Beach House', location: 'Anglesea, Surfcoast', category: 'New Build', year: 2022, image: null, gallery: [], order: 5 },
   ],
   services: [
     { _id: '1', number: '01', name: 'New Home Builds', description: 'Your vision brought to life from the ground up. We design and construct bespoke architectural homes tailored precisely to your lifestyle and aspirations.', order: 1 },
@@ -50,7 +50,7 @@ export const defaultData = {
 }
 
 export type SiteSettings = typeof defaultData.siteSettings
-export type Project = (typeof defaultData.projects)[number] & { image: any }
+export type Project = (typeof defaultData.projects)[number] & { image: any; gallery: any[] }
 export type Service = (typeof defaultData.services)[number]
 export type Testimonial = (typeof defaultData.testimonials)[number]
 export type TeamMember = (typeof defaultData.team)[number] & { photo: any }

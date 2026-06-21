@@ -10,7 +10,7 @@ export async function getFeaturedProjects() {
   if (!client) return null
   return client.fetch(
     groq`*[_type == "project" && featured == true] | order(order asc) [0...5] {
-      _id, name, location, category, year, image, order
+      _id, name, location, category, year, image, gallery, order
     }`
   )
 }
