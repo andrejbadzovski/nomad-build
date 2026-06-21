@@ -5,6 +5,11 @@ import type { SiteSettings } from '@/lib/constants'
 
 export function About({ data }: { data: SiteSettings & any }) {
   const aboutImage   = data?.aboutImage
+  if (typeof window !== 'undefined') {
+    console.log('[About] full data keys:', data ? Object.keys(data) : 'no data')
+    console.log('[About] aboutImage:', aboutImage)
+    console.log('[About] heroImage (for comparison):', data?.heroImage)
+  }
   const quote        = data?.aboutQuote || 'Crafting homes that tell your story.'
   const title        = data?.aboutTitle || 'More Than Builders'
   const titleEm      = data?.aboutTitleEm || "We're Creators"
