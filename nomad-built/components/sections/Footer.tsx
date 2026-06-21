@@ -3,16 +3,15 @@ import { motion } from 'framer-motion'
 import type { SiteSettings } from '@/lib/constants'
 
 export function Footer({ data }: { data: SiteSettings & any }) {
-  const email       = data?.ctaEmail    || 'hello@nomadbuilt.com.au'
-  const phone       = data?.ctaPhone    || '0489 073 885'
-  const phone2      = data?.ctaPhone2   || '0483 912 475'
-  const instagram   = data?.instagramUrl || 'https://www.instagram.com/nomadbuiltau/'
+  const email       = data?.ctaEmail    || 'info@talcondevelopments.com.au'
+  const phone       = data?.ctaPhone    || '0420 970 991'
+  const phone2      = data?.ctaPhone2   || ''
+  const instagram   = data?.instagramUrl || 'https://instagram.com/talcondevelopments'
   const facebook    = data?.facebookUrl  || '#'
-  const linkedin    = data?.linkedinUrl  || 'https://au.linkedin.com/company/nomadbuiltau'
+  const linkedin    = data?.linkedinUrl  || '#'
   const houzz       = data?.houzzUrl     || '#'
-  const footerAbout = data?.footerAbout  || 'Bespoke architectural builds and luxury renovations across Sydney and the Sunshine Coast. Delivering excellence since 2020.'
-  const licenceNSW  = data?.licenceNSW   || '361367C'
-  const licenceQLD  = data?.licenceQLD   || '15157359'
+  const footerAbout = data?.footerAbout  || 'New homes, townhouses and extensions across Geelong, the Surfcoast and Melbourne\'s Western Suburbs. Built with precision and pride.'
+  const licenceVIC  = data?.licenceNSW   || 'CDB-U 72278'
 
   return (
     <motion.footer
@@ -23,12 +22,10 @@ export function Footer({ data }: { data: SiteSettings & any }) {
     >
       <div className="footer-grid">
         <div className="footer-brand">
-          <span className="footer-logo">Nomad <span>Built</span></span>
+          <span className="footer-logo">Talcon <span>Developments</span></span>
           <p className="footer-about">{footerAbout}</p>
           <p className="footer-licence">
-            NSW Fair Trading Licence #{licenceNSW}<br />
-            QBCC No. #{licenceQLD}<br />
-            Building Practitioner Licence #BUP0001091
+            VBA Licence #{licenceVIC}
           </p>
         </div>
 
@@ -56,17 +53,17 @@ export function Footer({ data }: { data: SiteSettings & any }) {
           <h4>Contact</h4>
           <ul>
             <li><a href={`mailto:${email}`}>{email}</a></li>
-            <li><a href={`tel:${phone.replace(/\s/g, '')}`}>Sydney: {phone}</a></li>
-            <li><a href={`tel:${phone2.replace(/\s/g, '')}`}>Sunshine Coast: {phone2}</a></li>
-            <li><a href="#">Sydney, NSW</a></li>
-            <li><a href="#">Sunshine Coast, QLD</a></li>
+            <li><a href={`tel:${phone.replace(/\s/g, '')}`}>{phone}</a></li>
+            {phone2 && <li><a href={`tel:${phone2.replace(/\s/g, '')}`}>{phone2}</a></li>}
+            <li><a href="#">Geelong, VIC</a></li>
+            <li><a href="#">Melbourne Western Suburbs, VIC</a></li>
           </ul>
         </div>
       </div>
 
       <div className="footer-bottom">
         <p className="footer-copy">
-          © {new Date().getFullYear()} Nomad Built Pty Ltd. All rights reserved. Built with precision.
+          © {new Date().getFullYear()} Talcon Developments Pty Ltd. All rights reserved.
         </p>
         <div className="footer-socials">
           <a href={instagram} target="_blank" rel="noopener noreferrer">Instagram</a>

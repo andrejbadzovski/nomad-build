@@ -23,7 +23,7 @@ export function Hero({ data }: { data: SiteSettings & any }) {
   const heroTitle  = data?.heroTitle  || 'Spaces Built for'
   const heroTitleEm = data?.heroTitleEm || 'Extraordinary'
   const heroTitle3 = data?.heroTitle3 || 'Living'
-  const eyebrow    = data?.heroEyebrow || 'Sydney & Sunshine Coast · Est. 2020'
+  const eyebrow    = data?.heroEyebrow || 'Geelong · Surfcoast · Melbourne'
   const subtitle   = data?.heroSubtitle || 'We craft bespoke architectural homes and full-scale renovations that reflect your unique vision — guided by precision, elevated by design.'
   const heroImage  = data?.heroImage
 
@@ -36,7 +36,7 @@ export function Hero({ data }: { data: SiteSettings & any }) {
         {heroImage ? (
           <Image
             src={urlFor(heroImage).width(1400).url()}
-            alt="Nomad Built hero"
+            alt="Talcon Developments hero"
             fill
             priority
             sizes="100vw"
@@ -44,7 +44,7 @@ export function Hero({ data }: { data: SiteSettings & any }) {
           />
         ) : (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={FALLBACK_IMAGES.hero} alt="Nomad Built hero" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+          <img src={FALLBACK_IMAGES.hero} alt="Talcon Developments hero" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
         )}
       </motion.div>
 
@@ -135,7 +135,7 @@ export function Hero({ data }: { data: SiteSettings & any }) {
       >
         <div className="ticker-track">
           {[...Array(2)].map((_, pass) =>
-            ['Luxury New Builds', 'Bespoke Renovations', 'Architectural Extensions', 'Design & Build', 'Precision Craftsmanship', 'Sydney & Sunshine Coast'].map((label) => (
+            ['New Home Builds', 'Townhouses', 'Architectural Extensions', 'Design & Build', 'Precision Craftsmanship', 'Geelong · Surfcoast · Melbourne'].map((label) => (
               <span key={`${pass}-${label}`} className="ticker-item">
                 {label}
                 <span className="ticker-dot" />

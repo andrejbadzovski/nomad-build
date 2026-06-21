@@ -10,7 +10,7 @@ export function About({ data }: { data: SiteSettings & any }) {
   const quote        = data?.aboutQuote || 'Crafting homes that tell your story.'
   const title        = data?.aboutTitle || 'More Than Builders'
   const titleEm      = data?.aboutTitleEm || "We're Creators"
-  const paragraph1   = data?.aboutParagraph1 || 'At Nomad Built, we are more than design and build contractors; we are creators of bespoke spaces that embody timeless style, precision craftsmanship, and modern functionality. Since 2020, our team has delivered luxury new builds and full-scale renovations across Sydney and the Sunshine Coast.'
+  const paragraph1   = data?.aboutParagraph1 || 'At Talcon Developments, we are more than builders; we are creators of bespoke spaces built to stand the test of time. Our team specialises in new homes, townhouses and extensions across Geelong, the Surfcoast and Melbourne\'s Western Suburbs.'
   const paragraph2   = data?.aboutParagraph2 || 'Every project begins with a collaborative design journey and is guided seamlessly through construction with meticulous attention to detail. Our full-service approach ensures every stage — from concept to completion — is managed with expertise, transparency, and care.'
 
   return (
@@ -28,14 +28,14 @@ export function About({ data }: { data: SiteSettings & any }) {
           {aboutImage ? (
             <Image
               src={urlFor(aboutImage).width(800).url()}
-              alt="About Nomad Built"
+              alt="About Talcon Developments"
               fill
               sizes="40vw"
               style={{ objectFit: 'cover' }}
             />
           ) : (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={FALLBACK_IMAGES.about} alt="About Nomad Built" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+            <img src={FALLBACK_IMAGES.about} alt="About Talcon Developments" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
           )}
         </motion.div>
 

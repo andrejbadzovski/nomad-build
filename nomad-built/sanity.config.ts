@@ -6,8 +6,8 @@ const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || ''
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
 
 export default defineConfig({
-  name: 'nomad-built',
-  title: 'Nomad Built CMS',
+  name: 'talcon-developments',
+  title: 'Talcon Developments CMS',
   projectId,
   dataset,
   plugins: [structureTool()],

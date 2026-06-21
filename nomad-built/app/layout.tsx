@@ -18,15 +18,15 @@ const jost = Jost({
 })
 
 export const metadata: Metadata = {
-  title: 'Nomad Built — Bespoke Homes & Renovations',
+  title: 'Talcon Developments — New Homes, Townhouses & Extensions',
   description:
-    'Crafting bespoke architectural homes and full-scale renovations across Sydney and the Sunshine Coast. Delivering excellence since 2020.',
+    'Specialising in new homes, townhouses and extensions across Geelong, the Surfcoast and Melbourne Western Suburbs. Built with precision and pride.',
   openGraph: {
-    title: 'Nomad Built — Bespoke Homes & Renovations',
+    title: 'Talcon Developments — New Homes, Townhouses & Extensions',
     description:
-      'Crafting bespoke architectural homes and full-scale renovations across Sydney and the Sunshine Coast.',
+      'Specialising in new homes, townhouses and extensions across Geelong, the Surfcoast and Melbourne Western Suburbs.',
     type: 'website',
-    url: 'https://nomadbuilt.com.au',
+    url: 'https://talcondevelopments.com.au',
   },
 }
 

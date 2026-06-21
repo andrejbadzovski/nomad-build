@@ -35,7 +35,7 @@ export function Team({ data }: { data: TeamMember[] }) {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.15 }}
         >
-          Jake Carter, Jack Scoles, and James Behringer bring decades of combined expertise and a shared vision for creating spaces that endure.
+          The Talcon team brings decades of combined expertise and a shared vision for building homes that endure — across Geelong, the Surfcoast and Melbourne.
         </motion.p>
       </div>
 

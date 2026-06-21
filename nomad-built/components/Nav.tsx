@@ -36,7 +36,7 @@ export function Nav() {
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
       >
         <a href="#" className="nav-logo" onClick={(e) => handleNavClick(e, '#hero')}>
-          Nomad <span>Built</span>
+          Talcon <span>Developments</span>
         </a>
 
         <ul className="nav-links">

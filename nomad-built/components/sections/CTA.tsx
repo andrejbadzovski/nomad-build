@@ -9,8 +9,8 @@ export function CTA({ data }: { data: SiteSettings & any }) {
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
   const bgY = useTransform(scrollYProgress, [0, 1], ['-12%', '12%'])
 
-  const email = data?.ctaEmail || 'hello@nomadbuilt.com.au'
-  const phone = data?.ctaPhone || '+61483912475'
+  const email = data?.ctaEmail || 'info@talcondevelopments.com.au'
+  const phone = data?.ctaPhone || '0420970991'
 
   return (
     <section id="cta" ref={sectionRef}>
