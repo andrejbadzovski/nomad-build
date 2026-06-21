@@ -10,7 +10,7 @@ export function About({ data }: { data: SiteSettings & any }) {
   const quote        = data?.aboutQuote || 'Crafting homes that tell your story.'
   const title        = data?.aboutTitle || 'More Than Builders'
   const titleEm      = data?.aboutTitleEm || "We're Creators"
-  const paragraph1   = data?.aboutParagraph1 || 'At Talcon Developments, we are more than builders; we are creators of bespoke spaces built to stand the test of time. Our team specialises in new homes, townhouses and extensions across Geelong, the Surfcoast and Melbourne\'s Western Suburbs.'
+  const paragraph1   = data?.aboutParagraph1 || "At Talcon Developments, we are more than builders; we are creators of bespoke spaces built to stand the test of time. Our team specialises in new homes, townhouses and extensions across Geelong, the Surfcoast and Melbourne's Western Suburbs."
   const paragraph2   = data?.aboutParagraph2 || 'Every project begins with a collaborative design journey and is guided seamlessly through construction with meticulous attention to detail. Our full-service approach ensures every stage — from concept to completion — is managed with expertise, transparency, and care.'
 
   return (
