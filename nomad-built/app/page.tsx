@@ -2,7 +2,6 @@ import { getSiteSettings, getFeaturedProjects, getServices, getTestimonials, get
 import { defaultData } from '@/lib/constants'
 import { Nav } from '@/components/Nav'
 import { Hero } from '@/components/sections/Hero'
-import { Stats } from '@/components/sections/Stats'
 import { About } from '@/components/sections/About'
 import { Services } from '@/components/sections/Services'
 import { Process } from '@/components/sections/Process'
@@ -51,7 +50,6 @@ export default async function Home() {
       <Nav />
       <main>
         <Hero data={siteSettings} />
-        <Stats />
         <About data={siteSettings} />
         <Services data={services} />
         <Process />

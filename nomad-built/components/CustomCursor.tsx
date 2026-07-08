@@ -65,7 +65,7 @@ export function CustomCursor() {
           translateX: '-50%', translateY: '-50%',
           width: 8, height: 8,
           borderRadius: '50%',
-          background: '#c9a96e',
+          background: '#63DFF2',
           pointerEvents: 'none',
           zIndex: 9999,
           opacity: visible ? 1 : 0,
@@ -81,7 +81,7 @@ export function CustomCursor() {
           x: ringX, y: ringY,
           translateX: '-50%', translateY: '-50%',
           borderRadius: '50%',
-          border: '1px solid rgba(201,169,110,0.5)',
+          border: '1px solid rgba(99,223,242,0.5)',
           pointerEvents: 'none',
           zIndex: 9998,
           opacity: visible ? 1 : 0,
@@ -89,7 +89,7 @@ export function CustomCursor() {
         animate={{
           width: hovering ? 60 : 36,
           height: hovering ? 60 : 36,
-          borderColor: hovering ? 'rgba(201,169,110,0.9)' : 'rgba(201,169,110,0.5)',
+          borderColor: hovering ? 'rgba(99,223,242,0.9)' : 'rgba(99,223,242,0.5)',
         }}
         transition={{ duration: 0.25, ease: 'easeOut' }}
       />
