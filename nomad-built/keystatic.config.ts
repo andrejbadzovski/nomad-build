@@ -13,9 +13,9 @@ export default config({
   storage:
     process.env.NODE_ENV === 'production' ? { kind: 'cloud' } : { kind: 'local' },
   cloud: {
-    // Set this in Vercel → Settings → Environment Variables to your Keystatic Cloud
-    // project slug, e.g. "talcon/website". Created at https://keystatic.cloud.
-    project: process.env.NEXT_PUBLIC_KEYSTATIC_CLOUD_PROJECT ?? 'your-team/your-project',
+    // Keystatic Cloud project slug (from https://keystatic.cloud). Hardcoded so no
+    // Vercel env var is needed for the CMS.
+    project: 'talcom/talcondevelopment',
   },
 
   ui: {
