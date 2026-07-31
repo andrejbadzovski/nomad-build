@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { urlFor } from '@/sanity/lib/image'
+import { urlFor } from '@/lib/cms/image'
 import type { Project } from '@/lib/constants'
 import { FALLBACK_IMAGES } from '@/lib/constants'
 

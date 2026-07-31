@@ -1,4 +1,4 @@
-import { getAllProjects } from '@/sanity/lib/queries'
+import { getAllProjects } from '@/lib/cms/queries'
 import { defaultData } from '@/lib/constants'
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/sections/Footer'

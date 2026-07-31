@@ -149,7 +149,7 @@ body {
 
 /* ── HERO ── */
 #hero {
-  height: 100vh; position: relative;
+  min-height: 100vh; position: relative;
   display: flex; align-items: flex-end;
   overflow: hidden;
 }
@@ -189,7 +189,9 @@ body {
 }
 .hero-content {
   position: relative; z-index: 2;
-  padding: 0 60px 124px; max-width: 700px;
+  /* top padding reserves space for the fixed nav so the title never slides under it,
+     even on short/landscape viewports where the hero grows past 100vh */
+  padding: 128px 60px 124px; max-width: 700px;
 }
 .hero-eyebrow {
   font-family: var(--font-body), sans-serif;
@@ -851,9 +853,23 @@ footer {
   line-height: 1.8; color: var(--mid-grey); max-width: 280px;
   margin-bottom: 20px;
 }
+/* Accreditation / licence strip */
+.footer-credentials {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 28px 40px;
+  padding: 32px 0; margin-bottom: 8px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
 .footer-licence {
-  font-size: 0.68rem; color: rgba(107,107,100,0.7);
-  letter-spacing: 0.05em; line-height: 1.7;
+  font-size: 0.95rem; color: var(--white);
+  letter-spacing: 0.02em; line-height: 1.6; font-weight: 300;
+}
+.footer-licence strong { font-weight: 700; color: var(--white); }
+.footer-badges { display: flex; align-items: center; gap: 36px; flex-wrap: wrap; }
+.footer-badge-img {
+  height: 50px; width: auto; object-fit: contain;
+  /* render the coloured logos as light monochrome, like the current site */
+  filter: grayscale(1) brightness(1.7) opacity(0.8);
 }
 .footer-col h4 {
   font-size: 0.65rem; font-weight: 500;
@@ -1019,10 +1035,14 @@ footer {
   .nav-toggle { display: block; }
   .hero-badge { display: none; }
   .testimonials-track-wrap { margin: 0 -24px; }
-  #hero, #about, #services, #process, #portfolio, #testimonials, #team, #cta { padding: 80px 24px; }
+  #about, #services, #process, #portfolio, #testimonials, #team, #cta { padding: 80px 24px; }
+  /* Let the hero grow with its content instead of clipping it, and clear the fixed nav */
+  #hero { height: auto; min-height: 100vh; padding: 0; }
   .hero-image-block { width: 100%; opacity: 0.25; }
-  .hero-content { max-width: 100%; padding: 0 24px 80px; }
-  .hero-title { font-size: clamp(2.8rem, 10vw, 4rem); }
+  .hero-content { max-width: 100%; padding: 112px 24px 96px; }
+  .hero-eyebrow { margin-bottom: 18px; }
+  .hero-title { font-size: clamp(2rem, 8vw, 3.4rem); margin-bottom: 22px; }
+  .hero-desc { margin-bottom: 34px; }
   .scroll-indicator { display: none; }
   .stats-bar { grid-template-columns: 1fr 1fr; }
   .stat-item { padding: 28px 20px; }
@@ -1035,6 +1055,8 @@ footer {
   .team-grid { grid-template-columns: 1fr; }
   .team-portrait { height: 380px; }
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-credentials { justify-content: flex-start; gap: 22px 28px; }
+  .footer-badge-img { height: 40px; }
   .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
   .cta-actions { flex-direction: column; align-items: center; }
   .cursor, .cursor-ring { display: none; }

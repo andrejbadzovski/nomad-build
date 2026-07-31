@@ -2,7 +2,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
-import { urlFor } from '@/sanity/lib/image'
+import { urlFor } from '@/lib/cms/image'
 import type { SiteSettings } from '@/lib/constants'
 import { FALLBACK_IMAGES } from '@/lib/constants'
 

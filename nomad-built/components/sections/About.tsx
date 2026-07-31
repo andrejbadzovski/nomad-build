@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { urlFor } from '@/sanity/lib/image'
+import { urlFor } from '@/lib/cms/image'
 import type { SiteSettings } from '@/lib/constants'
 
 export function About({ data }: { data: SiteSettings & any }) {

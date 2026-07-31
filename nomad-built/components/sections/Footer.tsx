@@ -24,9 +24,6 @@ export function Footer({ data }: { data: SiteSettings & any }) {
         <div className="footer-brand">
           <span className="footer-logo">Talcon <span>Developments</span></span>
           <p className="footer-about">{footerAbout}</p>
-          <p className="footer-licence">
-            VBA Licence #{licenceVIC}
-          </p>
         </div>
 
         <div className="footer-col">
@@ -58,6 +55,29 @@ export function Footer({ data }: { data: SiteSettings & any }) {
             <li><a href="#">Geelong, VIC</a></li>
             <li><a href="#">Melbourne Western Suburbs, VIC</a></li>
           </ul>
+        </div>
+      </div>
+
+      {/* Accreditations / licence — monochrome, matching the current site */}
+      <div className="footer-credentials">
+        <p className="footer-licence">
+          License number: <strong>{licenceVIC}</strong>
+        </p>
+        <div className="footer-badges">
+          {/* Drop the logo files into public/images/badges/ with these exact names.
+              Missing files are hidden automatically. */}
+          <img
+            className="footer-badge-img"
+            src="/images/badges/registered-building-practitioner.webp"
+            alt="Registered Building Practitioner — Victorian Building Authority"
+            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
+          />
+          <img
+            className="footer-badge-img"
+            src="/images/badges/hia-member.webp"
+            alt="HIA Member"
+            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
+          />
         </div>
       </div>
 

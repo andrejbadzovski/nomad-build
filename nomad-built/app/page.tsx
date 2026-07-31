@@ -1,4 +1,4 @@
-import { getSiteSettings, getFeaturedProjects, getServices, getTestimonials, getTeam } from '@/sanity/lib/queries'
+import { getSiteSettings, getFeaturedProjects, getServices, getTestimonials, getTeam } from '@/lib/cms/queries'
 import { defaultData } from '@/lib/constants'
 import { Nav } from '@/components/Nav'
 import { Hero } from '@/components/sections/Hero'

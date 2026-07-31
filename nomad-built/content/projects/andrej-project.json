@@ -1,0 +1,10 @@
+{
+  "name": "andrej project",
+  "location": "sydney",
+  "category": "New Build",
+  "year": 2026,
+  "image": "/images/projects/andrej-project/image.png",
+  "gallery": [],
+  "featured": true,
+  "order": 3
+}

@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { urlFor } from '@/sanity/lib/image'
+import { urlFor } from '@/lib/cms/image'
 import type { TeamMember } from '@/lib/constants'
 
 export function Team({ data }: { data: TeamMember[] }) {
