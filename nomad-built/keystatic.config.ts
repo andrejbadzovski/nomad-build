@@ -15,7 +15,7 @@ export default config({
   cloud: {
     // Keystatic Cloud project slug (from https://keystatic.cloud). Hardcoded so no
     // Vercel env var is needed for the CMS.
-    project: 'talcom/talcondevelopment',
+    project: 'talcom/talcondevelopments',
   },
 
   ui: {
