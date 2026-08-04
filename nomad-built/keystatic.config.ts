@@ -59,9 +59,6 @@ export default config({
         ctaPhone2: fields.text({ label: 'Contact Phone (secondary)' }),
         address: fields.text({ label: 'Head Office Address' }),
         instagramUrl: fields.text({ label: 'Instagram URL' }),
-        facebookUrl: fields.text({ label: 'Facebook URL' }),
-        linkedinUrl: fields.text({ label: 'LinkedIn URL' }),
-        houzzUrl: fields.text({ label: 'Houzz URL' }),
 
         // ── Footer ────────────────────────────────────────────
         footerAbout: fields.text({ label: 'Footer About Text', multiline: true }),

@@ -18,9 +18,7 @@ export const defaultData = {
     aboutQuote: 'Crafting homes that tell your story.',
     ctaEmail: 'info@talcondevelopments.com.au',
     ctaPhone: '0420 970 991',
-    instagramUrl: 'https://instagram.com/talcondevelopments',
-    facebookUrl: '#',
-    linkedinUrl: '#',
+    instagramUrl: 'https://www.instagram.com/talcondevelopments/',
   },
   projects: [
     { _id: '1', name: 'Newtown Family Home', location: 'Newtown, Geelong', category: 'New Build', year: 2024, image: null, gallery: [], order: 1 },

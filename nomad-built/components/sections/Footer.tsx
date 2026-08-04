@@ -6,10 +6,7 @@ export function Footer({ data }: { data: SiteSettings & any }) {
   const email       = data?.ctaEmail    || 'info@talcondevelopments.com.au'
   const phone       = data?.ctaPhone    || '0420 970 991'
   const phone2      = data?.ctaPhone2   || ''
-  const instagram   = data?.instagramUrl || 'https://instagram.com/talcondevelopments'
-  const facebook    = data?.facebookUrl  || '#'
-  const linkedin    = data?.linkedinUrl  || '#'
-  const houzz       = data?.houzzUrl     || '#'
+  const instagram   = data?.instagramUrl || 'https://www.instagram.com/talcondevelopments/'
   const footerAbout = data?.footerAbout  || 'New homes, townhouses and extensions across Geelong, the Surfcoast and Melbourne\'s Western Suburbs. Built with precision and pride.'
   const licenceVIC  = data?.licenceNSW   || 'CDB-U 72278'
 
@@ -87,9 +84,6 @@ export function Footer({ data }: { data: SiteSettings & any }) {
         </p>
         <div className="footer-socials">
           <a href={instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href={facebook}  target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a href={houzz}     target="_blank" rel="noopener noreferrer">Houzz</a>
-          <a href={linkedin}  target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
     </motion.footer>
