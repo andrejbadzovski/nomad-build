@@ -5,6 +5,7 @@ import { Hero } from '@/components/sections/Hero'
 import { About } from '@/components/sections/About'
 import { Services } from '@/components/sections/Services'
 import { Process } from '@/components/sections/Process'
+import { HaveDrawings } from '@/components/sections/HaveDrawings'
 import { Portfolio } from '@/components/sections/Portfolio'
 import { Testimonials } from '@/components/sections/Testimonials'
 import { Team } from '@/components/sections/Team'
@@ -53,6 +54,7 @@ export default async function Home() {
         <About data={siteSettings} />
         <Services data={services} />
         <Process />
+        <HaveDrawings />
         <Portfolio data={projects} />
         <Testimonials data={testimonials} />
         <Team data={team} />

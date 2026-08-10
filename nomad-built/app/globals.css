@@ -493,6 +493,39 @@ body {
 }
 .step-desc { font-size: 0.82rem; font-weight: 300; line-height: 1.8; color: var(--mid-grey); }
 
+/* ── HAVE DRAWINGS ── */
+#have-drawings { padding: 40px 60px 100px; }
+.drawings-band {
+  display: flex; align-items: center; justify-content: space-between; gap: 48px;
+  max-width: 1200px; margin: 0 auto;
+  padding: 44px 52px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--gold);
+  border-radius: 4px;
+  box-shadow: var(--glow-sm);
+}
+.drawings-copy { max-width: 640px; }
+.drawings-copy .section-eyebrow { margin-bottom: 16px; }
+.drawings-title {
+  font-family: var(--font-display), 'Montserrat', sans-serif;
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  font-weight: 600; line-height: 1.2; color: var(--white);
+  margin-bottom: 14px;
+}
+.drawings-title em {
+  font-style: italic;
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.drawings-text {
+  font-size: 0.88rem; font-weight: 300; line-height: 1.75;
+  color: var(--light-grey); margin: 0;
+}
+.drawings-cta { flex-shrink: 0; white-space: nowrap; }
+
 /* ── PORTFOLIO ── */
 #portfolio { background: var(--off-black); padding: 140px 60px; }
 .portfolio-header {
@@ -1036,6 +1069,8 @@ footer {
   .hero-badge { display: none; }
   .testimonials-track-wrap { margin: 0 -24px; }
   #about, #services, #process, #portfolio, #testimonials, #team, #cta { padding: 80px 24px; }
+  #have-drawings { padding: 24px 24px 80px; }
+  .drawings-band { flex-direction: column; align-items: flex-start; gap: 28px; padding: 32px 28px; }
   /* Let the hero grow with its content instead of clipping it, and clear the fixed nav */
   #hero { height: auto; min-height: 100vh; padding: 0; }
   .hero-image-block { width: 100%; opacity: 0.25; }
