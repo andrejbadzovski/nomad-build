@@ -26,6 +26,14 @@ export function Hero({ data }: { data: SiteSettings & any }) {
   const eyebrow    = data?.heroEyebrow || 'Geelong · Surfcoast · Melbourne'
   const subtitle   = data?.heroSubtitle || 'We craft bespoke architectural homes and full-scale renovations that reflect your unique vision — guided by precision, elevated by design.'
   const heroImage  = data?.heroImage
+  const btnPrimary   = data?.heroBtnPrimary || 'View Our Work'
+  const btnSecondary = data?.heroBtnSecondary || 'Our Story'
+  const badgeNum     = data?.heroBadgeNum || '5★'
+  const badgeText    = data?.heroBadgeText || 'Rated\nExcellence'
+  const scrollLabel  = data?.heroScrollLabel || 'Scroll'
+  const tickerItems  = (data?.heroTicker?.length
+    ? data.heroTicker
+    : ['New Home Builds', 'Townhouses', 'Architectural Extensions', 'Design & Build', 'Precision Craftsmanship', 'Geelong · Surfcoast · Melbourne']) as string[]
 
   return (
     <section id="hero" ref={sectionRef}>
@@ -93,9 +101,9 @@ export function Hero({ data }: { data: SiteSettings & any }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 1.05, ease: [0.16, 1, 0.3, 1] }}
         >
-          <a href="#portfolio" className="btn-primary">View Our Work</a>
+          <a href="#portfolio" className="btn-primary">{btnPrimary}</a>
           <a href="#about" className="btn-ghost">
-            Our Story <span className="btn-ghost-arrow">→</span>
+            {btnSecondary} <span className="btn-ghost-arrow">→</span>
           </a>
         </motion.div>
       </div>
@@ -109,8 +117,15 @@ export function Hero({ data }: { data: SiteSettings & any }) {
       >
         <div className="hero-badge-circle">
           <div className="hero-badge-inner">
-            <span className="hero-badge-num">5★</span>
-            <span className="hero-badge-text">Rated<br />Excellence</span>
+            <span className="hero-badge-num">{badgeNum}</span>
+            <span className="hero-badge-text">
+              {String(badgeText).split('\n').map((line: string, i: number, arr: string[]) => (
+                <span key={i}>
+                  {line}
+                  {i < arr.length - 1 && <br />}
+                </span>
+              ))}
+            </span>
           </div>
         </div>
       </motion.div>
@@ -123,7 +138,7 @@ export function Hero({ data }: { data: SiteSettings & any }) {
         transition={{ delay: 1.8, duration: 1 }}
       >
         <div className="scroll-line" />
-        <span>Scroll</span>
+        <span>{scrollLabel}</span>
       </motion.div>
 
       {/* Marquee ticker */}
@@ -135,7 +150,7 @@ export function Hero({ data }: { data: SiteSettings & any }) {
       >
         <div className="ticker-track">
           {[...Array(2)].map((_, pass) =>
-            ['New Home Builds', 'Townhouses', 'Architectural Extensions', 'Design & Build', 'Precision Craftsmanship', 'Geelong · Surfcoast · Melbourne'].map((label) => (
+            tickerItems.map((label) => (
               <span key={`${pass}-${label}`} className="ticker-item">
                 {label}
                 <span className="ticker-dot" />

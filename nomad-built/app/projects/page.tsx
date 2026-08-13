@@ -1,4 +1,4 @@
-import { getAllProjects } from '@/lib/cms/queries'
+import { getAllProjects, getSiteSettings } from '@/lib/cms/queries'
 import { defaultData } from '@/lib/constants'
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/sections/Footer'
@@ -21,8 +21,9 @@ export default async function ProjectsPage() {
   let siteSettings = defaultData.siteSettings as any
 
   try {
-    const data = await getAllProjects()
+    const [data, s] = await Promise.all([getAllProjects(), getSiteSettings()])
     if (data?.length) projects = data
+    if (s) siteSettings = s
   } catch {
     // fall back to default data
   }
@@ -32,9 +33,9 @@ export default async function ProjectsPage() {
       <Grain />
       <CustomCursor />
       <ScrollProgress />
-      <Nav />
+      <Nav settings={siteSettings} />
       <main>
-        <ProjectsGrid data={projects} />
+        <ProjectsGrid data={projects} settings={siteSettings} />
         <Footer data={siteSettings} />
       </main>
     </SmoothScroll>

@@ -111,22 +111,28 @@ function Lightbox({ project, fallback, onClose }: { project: Project; fallback: 
   )
 }
 
-export function Portfolio({ data }: { data: Project[] }) {
+export function Portfolio({ data, settings }: { data: Project[]; settings?: any }) {
   const [active, setActive] = useState<{ project: Project; fallback: string } | null>(null)
+
+  const eyebrow  = settings?.portfolioEyebrow || 'Our Work'
+  const title    = settings?.portfolioTitle || 'Featured'
+  const titleEm  = settings?.portfolioTitleEm || 'Projects'
+  const viewAll  = settings?.portfolioViewAll || 'View All Projects'
+  const cardView = settings?.portfolioCardView || 'View Project'
 
   return (
     <section id="portfolio">
       <div className="portfolio-header">
         <div>
           <motion.p className="section-eyebrow" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-            Our Work
+            {eyebrow}
           </motion.p>
           <motion.h2 className="section-title" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.08 }}>
-            Featured <em>Projects</em>
+            {title} <em>{titleEm}</em>
           </motion.h2>
         </div>
         <motion.a href="/projects" className="btn-ghost" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
-          View All Projects <span className="btn-ghost-arrow">→</span>
+          {viewAll} <span className="btn-ghost-arrow">→</span>
         </motion.a>
       </div>
 
@@ -155,7 +161,7 @@ export function Portfolio({ data }: { data: Project[] }) {
                 )}
               </div>
               <div className="project-overlay" />
-              <div className="project-view">View Project</div>
+              <div className="project-view">{cardView}</div>
               <motion.div className="project-info" initial={{ y: 16, opacity: 0.8 }} whileHover={{ y: 0, opacity: 1 }} transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}>
                 <p className="project-location">{project.location}</p>
                 <h3 className="project-name">{project.name}</h3>

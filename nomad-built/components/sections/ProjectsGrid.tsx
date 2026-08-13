@@ -94,25 +94,32 @@ function Lightbox({ project, fallback, onClose }: { project: Project; fallback: 
   )
 }
 
-export function ProjectsGrid({ data }: { data: Project[] }) {
+export function ProjectsGrid({ data, settings }: { data: Project[]; settings?: any }) {
   const [active, setActive] = useState<{ project: Project; fallback: string } | null>(null)
+
+  const back     = settings?.projectsPageBack || 'Back to Home'
+  const eyebrow  = settings?.projectsPageEyebrow || 'Our Work'
+  const title    = settings?.projectsPageTitle || 'All'
+  const titleEm  = settings?.projectsPageTitleEm || 'Projects'
+  const intro    = settings?.projectsPageIntro || 'Browse our completed new homes, townhouses and extensions across Geelong, the Surfcoast and Melbourne.'
+  const cardView = settings?.projectsPageCardView || 'View Gallery'
 
   return (
     <section className="all-projects-section">
       {/* Header */}
       <div className="all-projects-header">
         <motion.a href="/" className="btn-ghost" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-          <span style={{ transform: 'scaleX(-1)', display: 'inline-block' }}>→</span> Back to Home
+          <span style={{ transform: 'scaleX(-1)', display: 'inline-block' }}>→</span> {back}
         </motion.a>
         <div>
           <motion.p className="section-eyebrow" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}>
-            Our Work
+            {eyebrow}
           </motion.p>
           <motion.h1 className="section-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.08 }}>
-            All <em>Projects</em>
+            {title} <em>{titleEm}</em>
           </motion.h1>
           <motion.p className="section-text" style={{ maxWidth: 480 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.15 }}>
-            Browse our completed new homes, townhouses and extensions across Geelong, the Surfcoast and Melbourne.
+            {intro}
           </motion.p>
         </div>
       </div>
@@ -139,7 +146,7 @@ export function ProjectsGrid({ data }: { data: Project[] }) {
                 )}
               </div>
               <div className="project-overlay" />
-              <div className="project-view">View Gallery</div>
+              <div className="project-view">{cardView}</div>
               <motion.div className="project-info" initial={{ y: 16, opacity: 0.8 }} whileHover={{ y: 0, opacity: 1 }} transition={{ duration: 0.35 }}>
                 <p className="project-location">{project.location}</p>
                 <h3 className="project-name">{project.name}</h3>

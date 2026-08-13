@@ -4,9 +4,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const links = ['About', 'Services', 'Team']
 
-export function Nav() {
+export function Nav({ settings }: { settings?: any }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+
+  const logo       = settings?.navLogo || 'Talcon'
+  const logoAccent = settings?.navLogoAccent || 'Developments'
+  const cta        = settings?.navCta || 'Get in Touch'
+  const ctaMobile  = settings?.navCtaMobile || 'Book a Call'
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60)
@@ -36,7 +41,7 @@ export function Nav() {
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
       >
         <a href="#" className="nav-logo" onClick={(e) => handleNavClick(e, '#hero')}>
-          Talcon <span>Developments</span>
+          {logo} <span>{logoAccent}</span>
         </a>
 
         <ul className="nav-links">
@@ -58,7 +63,7 @@ export function Nav() {
           className="nav-cta"
           onClick={(e) => handleNavClick(e, '#cta')}
         >
-          Get in Touch
+          {cta}
         </a>
 
         <button
@@ -117,7 +122,7 @@ export function Nav() {
               transition={{ delay: links.length * 0.07 + 0.05 }}
               onClick={(e) => handleNavClick(e, '#cta')}
             >
-              Book a Call
+              {ctaMobile}
             </motion.a>
           </motion.div>
         )}

@@ -1,7 +1,13 @@
 'use client'
 import { motion } from 'framer-motion'
 
-export function HaveDrawings() {
+export function HaveDrawings({ settings }: { settings?: any }) {
+  const eyebrow = settings?.drawingsEyebrow || 'Already Have Plans?'
+  const title   = settings?.drawingsTitle || 'Already have drawings?'
+  const titleEm = settings?.drawingsTitleEm || 'We can build that too.'
+  const text    = settings?.drawingsText || "Bring your architect's plans or council-approved drawings — our team will take them from paper to a finished build with the same precision and care."
+  const cta     = settings?.drawingsCta || 'Start Your Build'
+
   return (
     <section id="have-drawings">
       <motion.div
@@ -12,18 +18,17 @@ export function HaveDrawings() {
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="drawings-copy">
-          <p className="section-eyebrow">Already Have Plans?</p>
+          <p className="section-eyebrow">{eyebrow}</p>
           <h2 className="drawings-title">
-            Already have drawings? <em>We can build that too.</em>
+            {title} <em>{titleEm}</em>
           </h2>
           <p className="drawings-text">
-            Bring your architect&apos;s plans or council-approved drawings — our team will take
-            them from paper to a finished build with the same precision and care.
+            {text}
           </p>
         </div>
 
         <a href="#cta" className="btn-ghost drawings-cta">
-          Start Your Build <span className="btn-ghost-arrow">→</span>
+          {cta} <span className="btn-ghost-arrow">→</span>
         </a>
       </motion.div>
     </section>

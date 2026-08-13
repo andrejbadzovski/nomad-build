@@ -48,16 +48,16 @@ export default async function Home() {
       <Grain />
       <CustomCursor />
       <ScrollProgress />
-      <Nav />
+      <Nav settings={siteSettings} />
       <main>
         <Hero data={siteSettings} />
         <About data={siteSettings} />
-        <Services data={services} />
-        <Process />
-        <HaveDrawings />
-        <Portfolio data={projects} />
-        <Testimonials data={testimonials} />
-        <Team data={team} />
+        <Services data={services} settings={siteSettings} />
+        <Process settings={siteSettings} />
+        <HaveDrawings settings={siteSettings} />
+        <Portfolio data={projects} settings={siteSettings} />
+        <Testimonials data={testimonials} settings={siteSettings} />
+        <Team data={team} settings={siteSettings} />
         <CTA data={siteSettings} />
         <Footer data={siteSettings} />
       </main>

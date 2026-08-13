@@ -10,6 +10,8 @@ export function About({ data }: { data: SiteSettings & any }) {
   const titleEm    = data?.aboutTitleEm || "We're Creators"
   const paragraph1 = data?.aboutParagraph1 || "At Talcon Developments, we are more than builders; we are creators of bespoke spaces built to stand the test of time. Our team specialises in new homes, townhouses and extensions across Geelong, the Surfcoast and Melbourne's Western Suburbs."
   const paragraph2 = data?.aboutParagraph2 || 'Every project begins with a collaborative design journey and is guided seamlessly through construction with meticulous attention to detail. Our full-service approach ensures every stage — from concept to completion — is managed with expertise, transparency, and care.'
+  const eyebrow    = data?.aboutEyebrow || 'Who We Are'
+  const button     = data?.aboutButton || 'How We Work'
 
   const imageUrl = aboutImage ? urlFor(aboutImage).width(1200).url() : null
 
@@ -52,7 +54,7 @@ export function About({ data }: { data: SiteSettings & any }) {
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          Who We Are
+          {eyebrow}
         </motion.p>
 
         <motion.h2
@@ -87,7 +89,7 @@ export function About({ data }: { data: SiteSettings & any }) {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.3 }}
         >
-          How We Work <span className="btn-ghost-arrow">→</span>
+          {button} <span className="btn-ghost-arrow">→</span>
         </motion.a>
       </div>
     </section>

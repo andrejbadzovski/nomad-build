@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 
-const steps = [
+const defaultSteps = [
   {
     num: 'Step 01', name: 'Discovery Call',
     desc: 'We immerse ourselves in your vision — exploring your site, style, and lifestyle needs through an in-depth conversation and on-site assessment.',
@@ -20,7 +20,12 @@ const steps = [
   },
 ]
 
-export function Process() {
+export function Process({ settings }: { settings?: any }) {
+  const eyebrow = settings?.processEyebrow || 'How It Works'
+  const title   = settings?.processTitle || 'A Clear Path from'
+  const titleEm = settings?.processTitleEm || 'Vision to Reality'
+  const steps   = (settings?.processSteps?.length ? settings.processSteps : defaultSteps) as typeof defaultSteps
+
   return (
     <section id="process">
       <div className="process-header">
@@ -31,7 +36,7 @@ export function Process() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          How It Works
+          {eyebrow}
         </motion.p>
         <motion.h2
           className="section-title"
@@ -40,7 +45,7 @@ export function Process() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.08 }}
         >
-          A Clear Path from <em>Vision to Reality</em>
+          {title} <em>{titleEm}</em>
         </motion.h2>
       </div>
 
@@ -58,7 +63,7 @@ export function Process() {
 
         {steps.map((step, i) => (
           <motion.div
-            key={step.num}
+            key={i}
             className="process-step"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}

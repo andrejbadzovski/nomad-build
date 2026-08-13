@@ -23,9 +23,13 @@ function TestimonialCard({ t }: { t: Testimonial }) {
   )
 }
 
-export function Testimonials({ data }: { data: Testimonial[] }) {
+export function Testimonials({ data, settings }: { data: Testimonial[]; settings?: any }) {
   // Duplicate for seamless infinite loop
   const doubled = [...data, ...data]
+
+  const eyebrow = settings?.testimonialsEyebrow || 'Client Stories'
+  const title   = settings?.testimonialsTitle || 'What Our Clients'
+  const titleEm = settings?.testimonialsTitleEm || 'Say'
 
   return (
     <section id="testimonials">
@@ -37,7 +41,7 @@ export function Testimonials({ data }: { data: Testimonial[] }) {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          Client Stories
+          {eyebrow}
         </motion.p>
         <motion.h2
           className="section-title"
@@ -46,7 +50,7 @@ export function Testimonials({ data }: { data: Testimonial[] }) {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.08 }}
         >
-          What Our Clients <em>Say</em>
+          {title} <em>{titleEm}</em>
         </motion.h2>
       </div>
 

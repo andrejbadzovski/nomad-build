@@ -4,7 +4,12 @@ import { motion } from 'framer-motion'
 import { urlFor } from '@/lib/cms/image'
 import type { TeamMember } from '@/lib/constants'
 
-export function Team({ data }: { data: TeamMember[] }) {
+export function Team({ data, settings }: { data: TeamMember[]; settings?: any }) {
+  const eyebrow = settings?.teamEyebrow || 'The People'
+  const title   = settings?.teamTitle || 'Meet the'
+  const titleEm = settings?.teamTitleEm || 'Team'
+  const intro   = settings?.teamIntro || 'The Talcon team brings decades of combined expertise and a shared vision for building homes that endure — across Geelong, the Surfcoast and Melbourne.'
+
   return (
     <section id="team">
       <div className="team-header">
@@ -16,7 +21,7 @@ export function Team({ data }: { data: TeamMember[] }) {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            The People
+            {eyebrow}
           </motion.p>
           <motion.h2
             className="section-title"
@@ -25,7 +30,7 @@ export function Team({ data }: { data: TeamMember[] }) {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.08 }}
           >
-            Meet the <em>Team</em>
+            {title} <em>{titleEm}</em>
           </motion.h2>
         </div>
         <motion.p
@@ -35,7 +40,7 @@ export function Team({ data }: { data: TeamMember[] }) {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.15 }}
         >
-          The Talcon team brings decades of combined expertise and a shared vision for building homes that endure — across Geelong, the Surfcoast and Melbourne.
+          {intro}
         </motion.p>
       </div>
 

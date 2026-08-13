@@ -28,12 +28,27 @@ export default config({
       path: 'content/site-settings',
       format: { data: 'json' },
       schema: {
+        // ── Navigation ────────────────────────────────────────
+        navLogo: fields.text({ label: 'Nav — Logo Text' }),
+        navLogoAccent: fields.text({ label: 'Nav — Logo Accent Word' }),
+        navCta: fields.text({ label: 'Nav — Button Text (desktop)' }),
+        navCtaMobile: fields.text({ label: 'Nav — Button Text (mobile menu)' }),
+
         // ── Hero ──────────────────────────────────────────────
         heroEyebrow: fields.text({ label: 'Hero Eyebrow Text' }),
         heroTitle: fields.text({ label: 'Hero Title (line 1)' }),
         heroTitleEm: fields.text({ label: 'Hero Title (italic word)' }),
         heroTitle3: fields.text({ label: 'Hero Title (line 3)' }),
         heroSubtitle: fields.text({ label: 'Hero Subtitle', multiline: true }),
+        heroBtnPrimary: fields.text({ label: 'Hero — Primary Button' }),
+        heroBtnSecondary: fields.text({ label: 'Hero — Secondary Button' }),
+        heroBadgeNum: fields.text({ label: 'Hero — Badge Number (e.g. 5★)' }),
+        heroBadgeText: fields.text({ label: 'Hero — Badge Text', multiline: true }),
+        heroScrollLabel: fields.text({ label: 'Hero — Scroll Indicator Label' }),
+        heroTicker: fields.array(fields.text({ label: 'Ticker Item' }), {
+          label: 'Hero — Ticker Items',
+          itemLabel: (p) => p.value || 'Item',
+        }),
         heroImage: fields.image({
           label: 'Hero Background Image',
           description: 'Large architectural photo shown on the right side of the hero.',
@@ -42,16 +57,81 @@ export default config({
         }),
 
         // ── About ─────────────────────────────────────────────
+        aboutEyebrow: fields.text({ label: 'About Eyebrow' }),
         aboutTitle: fields.text({ label: 'About Title' }),
         aboutTitleEm: fields.text({ label: 'About Title (italic part)' }),
         aboutParagraph1: fields.text({ label: 'About Paragraph 1', multiline: true }),
         aboutParagraph2: fields.text({ label: 'About Paragraph 2', multiline: true }),
+        aboutButton: fields.text({ label: 'About — Button Text' }),
         aboutImage: fields.image({
           label: 'About Main Image',
           directory: 'public/images/site',
           publicPath: '/images/site',
         }),
         aboutQuote: fields.text({ label: 'About Pull Quote' }),
+
+        // ── Services (section copy; the cards are in "Services" collection) ──
+        servicesEyebrow: fields.text({ label: 'Services — Eyebrow' }),
+        servicesTitle: fields.text({ label: 'Services — Title' }),
+        servicesTitleEm: fields.text({ label: 'Services — Title (italic part)' }),
+        servicesIntro: fields.text({ label: 'Services — Intro Paragraph', multiline: true }),
+        servicesCardLink: fields.text({ label: 'Services — Card Link Text (e.g. Learn More)' }),
+
+        // ── Process ───────────────────────────────────────────
+        processEyebrow: fields.text({ label: 'Process — Eyebrow' }),
+        processTitle: fields.text({ label: 'Process — Title' }),
+        processTitleEm: fields.text({ label: 'Process — Title (italic part)' }),
+        processSteps: fields.array(
+          fields.object({
+            num: fields.text({ label: 'Step Label (e.g. Step 01)' }),
+            name: fields.text({ label: 'Step Title' }),
+            desc: fields.text({ label: 'Step Description', multiline: true }),
+          }),
+          {
+            label: 'Process — Steps',
+            itemLabel: (p) => p.fields.name.value || 'Step',
+          }
+        ),
+
+        // ── "Already Have Plans?" band ────────────────────────
+        drawingsEyebrow: fields.text({ label: 'Drawings Band — Eyebrow' }),
+        drawingsTitle: fields.text({ label: 'Drawings Band — Title' }),
+        drawingsTitleEm: fields.text({ label: 'Drawings Band — Title (italic part)' }),
+        drawingsText: fields.text({ label: 'Drawings Band — Paragraph', multiline: true }),
+        drawingsCta: fields.text({ label: 'Drawings Band — Button Text' }),
+
+        // ── Portfolio (Featured Projects section copy) ────────
+        portfolioEyebrow: fields.text({ label: 'Portfolio — Eyebrow' }),
+        portfolioTitle: fields.text({ label: 'Portfolio — Title' }),
+        portfolioTitleEm: fields.text({ label: 'Portfolio — Title (italic part)' }),
+        portfolioViewAll: fields.text({ label: 'Portfolio — "View All" Button' }),
+        portfolioCardView: fields.text({ label: 'Portfolio — Card Hover Text' }),
+
+        // ── Testimonials (section copy; cards are in "Testimonials" collection) ──
+        testimonialsEyebrow: fields.text({ label: 'Testimonials — Eyebrow' }),
+        testimonialsTitle: fields.text({ label: 'Testimonials — Title' }),
+        testimonialsTitleEm: fields.text({ label: 'Testimonials — Title (italic part)' }),
+
+        // ── Team (section copy; members are in "Team Members" collection) ──
+        teamEyebrow: fields.text({ label: 'Team — Eyebrow' }),
+        teamTitle: fields.text({ label: 'Team — Title' }),
+        teamTitleEm: fields.text({ label: 'Team — Title (italic part)' }),
+        teamIntro: fields.text({ label: 'Team — Intro Paragraph', multiline: true }),
+
+        // ── CTA band ──────────────────────────────────────────
+        ctaTitle: fields.text({ label: 'CTA — Title' }),
+        ctaTitleEm: fields.text({ label: 'CTA — Title (italic part)' }),
+        ctaText: fields.text({ label: 'CTA — Paragraph', multiline: true }),
+        ctaBtnPrimary: fields.text({ label: 'CTA — Primary Button' }),
+        ctaBtnSecondary: fields.text({ label: 'CTA — Secondary Button' }),
+
+        // ── All Projects page (/projects) ─────────────────────
+        projectsPageEyebrow: fields.text({ label: 'Projects Page — Eyebrow' }),
+        projectsPageTitle: fields.text({ label: 'Projects Page — Title' }),
+        projectsPageTitleEm: fields.text({ label: 'Projects Page — Title (italic part)' }),
+        projectsPageIntro: fields.text({ label: 'Projects Page — Intro Paragraph', multiline: true }),
+        projectsPageBack: fields.text({ label: 'Projects Page — Back Link Text' }),
+        projectsPageCardView: fields.text({ label: 'Projects Page — Card Hover Text' }),
 
         // ── Contact / Social ──────────────────────────────────
         ctaEmail: fields.text({ label: 'Contact Email' }),
@@ -62,8 +142,22 @@ export default config({
 
         // ── Footer ────────────────────────────────────────────
         footerAbout: fields.text({ label: 'Footer About Text', multiline: true }),
+        footerServicesHeading: fields.text({ label: 'Footer — Services Column Heading' }),
+        footerServices: fields.array(fields.text({ label: 'Service' }), {
+          label: 'Footer — Services List',
+          itemLabel: (p) => p.value || 'Service',
+        }),
+        footerCompanyHeading: fields.text({ label: 'Footer — Company Column Heading' }),
+        footerContactHeading: fields.text({ label: 'Footer — Contact Column Heading' }),
+        footerLocations: fields.array(fields.text({ label: 'Location' }), {
+          label: 'Footer — Locations List',
+          itemLabel: (p) => p.value || 'Location',
+        }),
+        footerLicenceLabel: fields.text({ label: 'Footer — Licence Label (e.g. "License number:")' }),
         licenceNSW: fields.text({ label: 'Licence Number (primary)' }),
         licenceQLD: fields.text({ label: 'Licence Number (secondary)' }),
+        footerSocialLabel: fields.text({ label: 'Footer — Social Link Label' }),
+        footerCopyright: fields.text({ label: 'Footer — Copyright Text (year is added automatically)' }),
       },
     }),
   },

@@ -9,6 +9,20 @@ export function Footer({ data }: { data: SiteSettings & any }) {
   const instagram   = data?.instagramUrl || 'https://www.instagram.com/talcondevelopments/'
   const footerAbout = data?.footerAbout  || 'New homes, townhouses and extensions across Geelong, the Surfcoast and Melbourne\'s Western Suburbs. Built with precision and pride.'
   const licenceVIC  = data?.licenceNSW   || 'CDB-U 72278'
+  const logo         = data?.navLogo || 'Talcon'
+  const logoAccent   = data?.navLogoAccent || 'Developments'
+  const servicesHeading = data?.footerServicesHeading || 'Services'
+  const services     = (data?.footerServices?.length
+    ? data.footerServices
+    : ['New Builds', 'Renovations', 'Extensions', 'Design & Build', 'Luxury Fit-Outs']) as string[]
+  const companyHeading = data?.footerCompanyHeading || 'Company'
+  const contactHeading = data?.footerContactHeading || 'Contact'
+  const locations    = (data?.footerLocations?.length
+    ? data.footerLocations
+    : ['Geelong, VIC', 'Melbourne Western Suburbs, VIC']) as string[]
+  const licenceLabel = data?.footerLicenceLabel || 'License number:'
+  const socialLabel  = data?.footerSocialLabel || 'Instagram'
+  const copyright    = data?.footerCopyright || 'Talcon Developments Pty Ltd. All rights reserved.'
 
   return (
     <motion.footer
@@ -19,21 +33,21 @@ export function Footer({ data }: { data: SiteSettings & any }) {
     >
       <div className="footer-grid">
         <div className="footer-brand">
-          <span className="footer-logo">Talcon <span>Developments</span></span>
+          <span className="footer-logo">{logo} <span>{logoAccent}</span></span>
           <p className="footer-about">{footerAbout}</p>
         </div>
 
         <div className="footer-col">
-          <h4>Services</h4>
+          <h4>{servicesHeading}</h4>
           <ul>
-            {['New Builds', 'Renovations', 'Extensions', 'Design & Build', 'Luxury Fit-Outs'].map(s => (
+            {services.map(s => (
               <li key={s}><a href="#services">{s}</a></li>
             ))}
           </ul>
         </div>
 
         <div className="footer-col">
-          <h4>Company</h4>
+          <h4>{companyHeading}</h4>
           <ul>
             <li><a href="#about">About Us</a></li>
             <li><a href="#team">Our Team</a></li>
@@ -44,13 +58,14 @@ export function Footer({ data }: { data: SiteSettings & any }) {
         </div>
 
         <div className="footer-col">
-          <h4>Contact</h4>
+          <h4>{contactHeading}</h4>
           <ul>
             <li><a href={`mailto:${email}`}>{email}</a></li>
             <li><a href={`tel:${phone.replace(/\s/g, '')}`}>{phone}</a></li>
             {phone2 && <li><a href={`tel:${phone2.replace(/\s/g, '')}`}>{phone2}</a></li>}
-            <li><a href="#">Geelong, VIC</a></li>
-            <li><a href="#">Melbourne Western Suburbs, VIC</a></li>
+            {locations.map((loc) => (
+              <li key={loc}><a href="#">{loc}</a></li>
+            ))}
           </ul>
         </div>
       </div>
@@ -58,7 +73,7 @@ export function Footer({ data }: { data: SiteSettings & any }) {
       {/* Accreditations / licence — monochrome, matching the current site */}
       <div className="footer-credentials">
         <p className="footer-licence">
-          License number: <strong>{licenceVIC}</strong>
+          {licenceLabel} <strong>{licenceVIC}</strong>
         </p>
         <div className="footer-badges">
           {/* Drop the logo files into public/images/badges/ with these exact names.
@@ -80,10 +95,10 @@ export function Footer({ data }: { data: SiteSettings & any }) {
 
       <div className="footer-bottom">
         <p className="footer-copy">
-          © {new Date().getFullYear()} Talcon Developments Pty Ltd. All rights reserved.
+          © {new Date().getFullYear()} {copyright}
         </p>
         <div className="footer-socials">
-          <a href={instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href={instagram} target="_blank" rel="noopener noreferrer">{socialLabel}</a>
         </div>
       </div>
     </motion.footer>

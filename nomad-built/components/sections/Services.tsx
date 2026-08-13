@@ -10,7 +10,13 @@ const cardVariants = {
   }),
 }
 
-export function Services({ data }: { data: Service[] }) {
+export function Services({ data, settings }: { data: Service[]; settings?: any }) {
+  const eyebrow  = settings?.servicesEyebrow || 'What We Do'
+  const title    = settings?.servicesTitle || 'Our'
+  const titleEm  = settings?.servicesTitleEm || 'Expertise'
+  const intro    = settings?.servicesIntro || 'From bespoke new builds to full home transformations, every service is delivered with the same unwavering commitment to quality.'
+  const cardLink = settings?.servicesCardLink || 'Learn More'
+
   return (
     <section id="services">
       <div className="services-header">
@@ -22,7 +28,7 @@ export function Services({ data }: { data: Service[] }) {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            What We Do
+            {eyebrow}
           </motion.p>
           <motion.h2
             className="section-title"
@@ -31,7 +37,7 @@ export function Services({ data }: { data: Service[] }) {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.05 }}
           >
-            Our <em>Expertise</em>
+            {title} <em>{titleEm}</em>
           </motion.h2>
         </div>
         <motion.p
@@ -42,7 +48,7 @@ export function Services({ data }: { data: Service[] }) {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
         >
-          From bespoke new builds to full home transformations, every service is delivered with the same unwavering commitment to quality.
+          {intro}
         </motion.p>
       </div>
 
@@ -60,7 +66,7 @@ export function Services({ data }: { data: Service[] }) {
             <div className="service-number">{service.number}</div>
             <h3 className="service-name">{service.name}</h3>
             <p className="service-text">{service.description}</p>
-            <a href="#cta" className="service-link">Learn More</a>
+            <a href="#cta" className="service-link">{cardLink}</a>
           </motion.div>
         ))}
       </div>

@@ -11,6 +11,11 @@ export function CTA({ data }: { data: SiteSettings & any }) {
 
   const email = data?.ctaEmail || 'info@talcondevelopments.com.au'
   const phone = data?.ctaPhone || '0420970991'
+  const title        = data?.ctaTitle || 'Ready to Build Your'
+  const titleEm      = data?.ctaTitleEm || 'Dream Home?'
+  const text         = data?.ctaText || "Begin with a discovery call. We'll explore your vision, your site, and how we can bring your highest aspirations to life."
+  const btnPrimary   = data?.ctaBtnPrimary || 'Book a Discovery Call'
+  const btnSecondary = data?.ctaBtnSecondary || 'Call Us Today'
 
   return (
     <section id="cta" ref={sectionRef}>
@@ -35,7 +40,7 @@ export function CTA({ data }: { data: SiteSettings & any }) {
         viewport={{ once: true }}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
       >
-        Ready to Build Your <em>Dream Home?</em>
+        {title} <em>{titleEm}</em>
       </motion.h2>
 
       <motion.p
@@ -45,7 +50,7 @@ export function CTA({ data }: { data: SiteSettings & any }) {
         viewport={{ once: true }}
         transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
       >
-        Begin with a discovery call. We&apos;ll explore your vision, your site, and how we can bring your highest aspirations to life.
+        {text}
       </motion.p>
 
       <motion.div
@@ -55,9 +60,9 @@ export function CTA({ data }: { data: SiteSettings & any }) {
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
       >
-        <a href={`mailto:${email}`} className="btn-primary">Book a Discovery Call</a>
+        <a href={`mailto:${email}`} className="btn-primary">{btnPrimary}</a>
         <a href={`tel:${phone}`} className="btn-ghost">
-          Call Us Today <span className="btn-ghost-arrow">→</span>
+          {btnSecondary} <span className="btn-ghost-arrow">→</span>
         </a>
       </motion.div>
     </section>
