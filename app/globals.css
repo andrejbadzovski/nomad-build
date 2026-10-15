@@ -24,6 +24,8 @@
   --glow-md: 0 4px 48px rgba(99,223,242,0.22);
   --gradient-gold: linear-gradient(135deg, #8fe9f6 0%, #63DFF2 45%, #3fc9de 100%);
   --gradient-gold-h: linear-gradient(90deg, #63DFF2 0%, #8fe9f6 55%, #63DFF2 100%);
+  /* Brand-blue arrow cursor (hotspot at the arrow tip) */
+  --cursor-arrow: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27 viewBox=%270 0 24 24%27%3E%3Cpath d=%27M3 2v17l4.6-4.4 3 6.9 3-1.3-3-6.8H17z%27 fill=%27%2363DFF2%27 stroke=%27%230B0E12%27 stroke-width=%271.4%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E") 3 2, auto;
 }
 
 html { scroll-behavior: auto; } /* Lenis handles smooth scroll */
@@ -34,11 +36,15 @@ body {
   font-family: var(--font-body), 'Inter', sans-serif;
   font-weight: 400;
   overflow-x: hidden;
-  cursor: none;
+  cursor: var(--cursor-arrow);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
+
+/* Clickable things keep the same blue arrow; text fields keep the text cursor */
+a, button, [role="button"], label, select, summary { cursor: inherit; }
+input, textarea { cursor: text; }
 
 @media (max-width: 768px) { body { cursor: auto; } }
 
@@ -122,7 +128,7 @@ body {
 .nav-cta:hover { background: var(--gold); color: var(--black); border-color: var(--gold); box-shadow: 0 0 22px rgba(99,223,242,0.28); }
 
 .nav-toggle {
-  display: none; background: none; border: none; cursor: pointer; padding: 8px;
+  display: none; background: none; border: none; cursor: inherit; padding: 8px;
 }
 .nav-toggle span {
   display: block; width: 24px; height: 1px;
@@ -251,7 +257,7 @@ body {
   font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
   text-transform: uppercase; text-decoration: none;
   transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-  border: none; cursor: pointer;
+  border: none; cursor: inherit;
   position: relative; overflow: hidden;
 }
 .btn-primary::after {
@@ -270,7 +276,7 @@ body {
   font-family: var(--font-display), 'Montserrat', sans-serif;
   font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
   text-transform: uppercase; text-decoration: none;
-  transition: color 0.3s; background: none; border: none; cursor: pointer;
+  transition: color 0.3s; background: none; border: none; cursor: inherit;
 }
 .btn-ghost:hover { color: var(--cream); }
 .btn-ghost-arrow {
@@ -539,7 +545,7 @@ body {
   gap: 3px;
 }
 .project-card {
-  position: relative; overflow: hidden; cursor: none;
+  position: relative; overflow: hidden; cursor: inherit;
 }
 .project-card:nth-child(1) { grid-column: 1 / 8; grid-row: 1; }
 .project-card:nth-child(2) { grid-column: 8 / 13; grid-row: 1; }
@@ -653,7 +659,7 @@ body {
   color: var(--light-grey); font-size: 1rem;
   width: 36px; height: 36px;
   display: flex; align-items: center; justify-content: center;
-  cursor: none; transition: color 0.2s, border-color 0.2s;
+  cursor: inherit; transition: color 0.2s, border-color 0.2s;
   backdrop-filter: blur(6px);
 }
 .lightbox-close:hover { color: var(--gold); border-color: var(--gold); }
@@ -671,7 +677,7 @@ body {
   color: var(--cream); font-size: 1.1rem;
   width: 44px; height: 44px;
   display: flex; align-items: center; justify-content: center;
-  cursor: none; z-index: 5;
+  cursor: inherit; z-index: 5;
   transition: background 0.25s, border-color 0.25s, color 0.25s;
   backdrop-filter: blur(4px);
 }
@@ -684,10 +690,12 @@ body {
 }
 .lightbox-dot {
   width: 6px; height: 6px; border-radius: 50%;
-  background: rgba(255,255,255,0.3); border: none; cursor: none;
+  background: rgba(255,255,255,0.3); border: none; cursor: inherit;
   transition: background 0.25s, transform 0.25s;
 }
 .lightbox-dot.active { background: var(--gold); transform: scale(1.3); }
+/* Keep the dots clear of the video player controls */
+.lightbox-image-wrap--video .lightbox-dots { bottom: auto; top: 16px; }
 .lightbox-info {
   display: flex; justify-content: space-between; align-items: center;
   padding: 20px 28px;
@@ -760,6 +768,13 @@ body {
 }
 .testimonial-author { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em; color: var(--white); text-transform: uppercase; }
 .testimonial-location { font-size: 0.65rem; color: var(--mid-grey); margin-top: 4px; letter-spacing: 0.1em; }
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  margin-top: 48px; overflow: hidden;
+}
+.testimonials-grid .testimonial-card { width: auto; }
+/* "View More / Show Less" toggle under a section */
+.section-more { display: flex; justify-content: center; margin-top: 56px; }
 
 /* ── TEAM ── */
 #team { background: var(--off-black); padding: 140px 60px; }
@@ -1094,7 +1109,6 @@ footer {
   .footer-badge-img { height: 40px; }
   .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
   .cta-actions { flex-direction: column; align-items: center; }
-  .cursor, .cursor-ring { display: none; }
   .about-media-quote { width: 85%; margin-top: -60px; padding: 24px 28px; }
   .about-media-quote blockquote { font-size: 1.1rem; }
 }

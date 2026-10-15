@@ -1,5 +1,6 @@
 'use client'
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import type { Testimonial } from '@/lib/constants'
 
 function Stars({ count }: { count: number }) {
@@ -30,6 +31,10 @@ export function Testimonials({ data, settings }: { data: Testimonial[]; settings
   const eyebrow = settings?.testimonialsEyebrow || 'Client Stories'
   const title   = settings?.testimonialsTitle || 'What Our Clients'
   const titleEm = settings?.testimonialsTitleEm || 'Say'
+  const viewMore = settings?.testimonialsViewMore || 'View More'
+  const viewLess = settings?.testimonialsViewLess || 'Show Less'
+
+  const [expanded, setExpanded] = useState(false)
 
   return (
     <section id="testimonials">
@@ -67,6 +72,30 @@ export function Testimonials({ data, settings }: { data: Testimonial[]; settings
           ))}
         </div>
       </motion.div>
+
+      {/* Full list of every testimonial, revealed under the scrolling strip */}
+      <AnimatePresence initial={false}>
+        {expanded && (
+          <motion.div
+            className="testimonials-grid"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {data.map((t) => (
+              <TestimonialCard key={t._id} t={t} />
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="section-more">
+        <button className="btn-ghost" onClick={() => setExpanded(e => !e)} aria-expanded={expanded}>
+          {expanded ? viewLess : viewMore}{' '}
+          <span className="btn-ghost-arrow" style={{ transform: expanded ? 'rotate(-90deg)' : 'rotate(90deg)' }}>→</span>
+        </button>
+      </div>
     </section>
   )
 }

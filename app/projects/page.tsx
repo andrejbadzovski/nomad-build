@@ -3,7 +3,6 @@ import { defaultData } from '@/lib/constants'
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/sections/Footer'
 import { SmoothScroll } from '@/components/SmoothScroll'
-import { CustomCursor } from '@/components/CustomCursor'
 import { ScrollProgress } from '@/components/ScrollProgress'
 import { Grain } from '@/components/Grain'
 import { ProjectsGrid } from '@/components/sections/ProjectsGrid'
@@ -31,7 +30,6 @@ export default async function ProjectsPage() {
   return (
     <SmoothScroll>
       <Grain />
-      <CustomCursor />
       <ScrollProgress />
       <Nav settings={siteSettings} />
       <main>

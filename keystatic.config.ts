@@ -111,12 +111,19 @@ export default config({
         testimonialsEyebrow: fields.text({ label: 'Testimonials — Eyebrow' }),
         testimonialsTitle: fields.text({ label: 'Testimonials — Title' }),
         testimonialsTitleEm: fields.text({ label: 'Testimonials — Title (italic part)' }),
+        testimonialsViewMore: fields.text({ label: 'Testimonials — "View More" Button' }),
+        testimonialsViewLess: fields.text({ label: 'Testimonials — "Show Less" Button' }),
 
         // ── Team (section copy; members are in "Team Members" collection) ──
         teamEyebrow: fields.text({ label: 'Team — Eyebrow' }),
         teamTitle: fields.text({ label: 'Team — Title' }),
         teamTitleEm: fields.text({ label: 'Team — Title (italic part)' }),
         teamIntro: fields.text({ label: 'Team — Intro Paragraph', multiline: true }),
+        teamViewMore: fields.text({
+          label: 'Team — "View More" Button',
+          description: 'Shown when there are more than 3 team members.',
+        }),
+        teamViewLess: fields.text({ label: 'Team — "Show Less" Button' }),
 
         // ── CTA band ──────────────────────────────────────────
         ctaTitle: fields.text({ label: 'CTA — Title' }),
@@ -191,12 +198,33 @@ export default config({
           publicPath: '/images/projects',
         }),
         gallery: fields.array(
-          fields.image({
-            label: 'Gallery Image',
-            directory: 'public/images/projects/gallery',
-            publicPath: '/images/projects/gallery',
-          }),
-          { label: 'Gallery Images' }
+          fields.conditional(
+            fields.select({
+              label: 'Type',
+              options: [
+                { label: 'Image', value: 'image' },
+                { label: 'Video', value: 'video' },
+              ],
+              defaultValue: 'image',
+            }),
+            {
+              image: fields.image({
+                label: 'Gallery Image',
+                directory: 'public/images/projects/gallery',
+                publicPath: '/images/projects/gallery',
+              }),
+              video: fields.file({
+                label: 'Gallery Video',
+                description: 'MP4 works in every browser. Keep files under ~50 MB so the page loads quickly.',
+                directory: 'public/videos/projects/gallery',
+                publicPath: '/videos/projects/gallery',
+              }),
+            }
+          ),
+          {
+            label: 'Gallery (images & videos)',
+            itemLabel: (p) => (p.discriminant === 'video' ? 'Video' : 'Image'),
+          }
         ),
         featured: fields.checkbox({ label: 'Show on Homepage', defaultValue: true }),
         order: fields.integer({ label: 'Display Order (1 = first)' }),

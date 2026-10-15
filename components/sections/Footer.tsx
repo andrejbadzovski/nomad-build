@@ -80,8 +80,8 @@ export function Footer({ data }: { data: SiteSettings & any }) {
               Missing files are hidden automatically. */}
           <img
             className="footer-badge-img"
-            src="/images/badges/registered-building-practitioner.webp"
-            alt="Registered Building Practitioner — Victorian Building Authority"
+            src="/images/badges/bpc.png"
+            alt="Building and Plumbing Commission"
             onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
           />
           <img

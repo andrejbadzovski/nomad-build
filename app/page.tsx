@@ -11,7 +11,6 @@ import { Testimonials } from '@/components/sections/Testimonials'
 import { Team } from '@/components/sections/Team'
 import { CTA } from '@/components/sections/CTA'
 import { Footer } from '@/components/sections/Footer'
-import { CustomCursor } from '@/components/CustomCursor'
 import { SmoothScroll } from '@/components/SmoothScroll'
 import { ScrollProgress } from '@/components/ScrollProgress'
 import { Grain } from '@/components/Grain'
@@ -46,7 +45,6 @@ export default async function Home() {
   return (
     <SmoothScroll>
       <Grain />
-      <CustomCursor />
       <ScrollProgress />
       <Nav settings={siteSettings} />
       <main>
