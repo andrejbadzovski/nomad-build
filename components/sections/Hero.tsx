@@ -115,19 +115,6 @@ export function Hero({ data }: { data: SiteSettings & any }) {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="hero-badge-circle">
-          <div className="hero-badge-inner">
-            <span className="hero-badge-num">{badgeNum}</span>
-            <span className="hero-badge-text">
-              {String(badgeText).split('\n').map((line: string, i: number, arr: string[]) => (
-                <span key={i}>
-                  {line}
-                  {i < arr.length - 1 && <br />}
-                </span>
-              ))}
-            </span>
-          </div>
-        </div>
       </motion.div>
 
       {/* Scroll indicator */}
